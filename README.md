@@ -567,7 +567,7 @@ Model-NativeView-* 如React-Native解决方案，转为原生控件展示
 #### 用户访问统计
 
 * PV(Page View)
-* UV(Unique Visitor) - 可以基于1.cookie和ip或2.userAgent和IP进行统计
+* UV(Unique Visitor) - 可以基于1.cookie和IP或2.userAgent和IP进行统计
 * VV(Visit View)
 * IP(访问站点的不同IP数)
 
@@ -603,15 +603,11 @@ Model-NativeView-* 如React-Native解决方案，转为原生控件展示
 
 ### 前端搜索引擎优化基础
 
-**title、keywors、description的优化**
-
-**语义化标签的优化**
-
-**URL规范化**
-
-**robot.txt文件引导爬虫**
-
-**sitemap.html或sitemap.xml**
+* title、keywors、description的优化
+* 语义化标签的优化
+* URL规范化
+* robot.txt文件引导爬虫
+* sitemap.html或sitemap.xml
 
 ## 前端跨栈技术
 
