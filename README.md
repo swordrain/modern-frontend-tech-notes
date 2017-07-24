@@ -318,5 +318,236 @@ funciton sendToNative(uri, data){
 * Proxy
 * ...
 
-## 前端表现层基础
+### 前端表现层基础
 
+* CSS选择器与优先级
+* CSS属性
+	* 布局类
+	* 几何类
+	* 文本类
+	* 动画类
+	* 查询类
+
+### 前端界面技术
+
+CSS样式统一化：reset normalize neat
+
+CSS预处理： SASS LESS Stylus postCSS
+
+动画：
+
+* JS实现
+* SVG
+* CSS3 transition
+* CSS3 animation
+* Canvas
+* requestAnimationFrame
+
+### 响应式网站
+
+1. 根据userAgent发送302响应跳转
+2. 使用JS、media query、<picture>、rem等手段
+
+## 现代前端交互框架
+
+**直接操作DOM**
+
+* 原生DOM方法 
+* jQuery
+
+**MV*交互模式**
+
+* MVC 
+* MVP 
+* MVVM
+* Virtual DOM
+
+**MVVM的数据变更检测方法**
+
+* 手动触发绑定
+* 脏值检测
+* 前端数据对象劫持（使用Object.defineProperty、Object.defineProperties对ViewModel对象进行get()和set()的监听）
+* ES6 Proxy
+
+**MNV*时代**
+
+Model-NativeView-* 如React-Native解决方案，转为原生控件展示
+
+## 前端项目与技术实践
+### 前端开发规范
+**前端通用规范**
+
+* HTML CSS JS结构分离
+* 统一用tab缩进
+* 用`<meta charset="utf-8">`指定编码
+* 一般都用小写
+* 代码单行长度限制（120或80字符）
+* 注释
+* 删除行尾空格与符号
+
+**前端HTML规范**
+
+* 用`<!DOCTYPE html>`定义文档类型
+* head内容包含title、keyword、description等SEO所需要的内容
+* 省略type，如`text/css`、`text/javascript`
+* 使用双引号包裹属性值
+* 属性值省略，不用指定`true`或`readonly`等
+* 元素正确的嵌套，如inline元素里不嵌套block元素
+* 标签合理闭合
+* 使用img的alt属性
+* 使用label的for属性
+* 按模块添加注释，如`<!-- News List module -->`
+* 元素标签合理的分行、缩进
+* 标签语义化
+
+**前端CSS规范**
+
+* 引用规范，不推荐style
+* 合理命名，class用中划线-，样式一般不用id（没法复用）
+* 简写方式，0不需要单位，URL资源的引号不需要
+* 属性书写顺序，先布局后内容
+* Hack写法，先私有属性后标准属性（-webkit-box-shadow在box-shadow之前）
+* 高效实现，不冗余
+* 使用预处理脚本
+
+**ES5规范**
+
+* 分号统一加上
+* 合理空格、空行
+* 字符串最外层用单引号
+* 合理变量命名，jQuery对象用$开头
+* 对象属性名不加引号，键值缩进，数组、对象属性后不能有逗号
+* 代码块大括号不省略
+* 条件判断要严谨
+* 不在条件语句或循环语句中声明函数
+
+**ES6规范**
+
+* 正确使用let const
+* 字符串拼接使用字符串模板
+* 解构赋值尽量就一层
+* 数组拷贝推荐使用...实现
+* 数组遍历推荐用for of
+* 尽量使用class定义类，使用constructor进行属性成员变量赋值
+* 模块化多变量导出尽量使用对象解构，不适用全局导出，不把import和export写在同一行
+* 导出类名时，保持模块名称和文件名相同，首字符大写
+* yield进行异步操作时用try catch包括，方便对异常处理
+* 推荐使用Promise而不是第三方库
+* 避免使用迭代器
+* 合理使用Generator，推荐使用async/await
+
+### 前端组件规范
+
+
+### 自动化构建
+
+构建步骤
+
+1. 读取入口文件
+2. 分析模块引用
+3. 按照引用记载模块
+4. 模块文件编译处理
+5. 模块文件合并
+6. 文件优化处理
+7. 写入生成目录
+
+构建解决问题
+
+1. 模块分析引入
+2. 模块化规范支持
+3. CSS编译、自动合并图片（CSS sprite）
+4. 压缩优化
+5. HTML路径分析替换
+6. 区分开发和上线目录环境
+7. 异步文件打包方案
+8. 文件目录白名单设置
+
+### 前端性能优化
+#### 前端性能测试
+**Performance Timing API**
+
+![Performance](http://images2015.cnblogs.com/blog/595796/201603/595796-20160323172552386-842768536.png)
+
+[详情戳这里](https://www.w3.org/TR/resource-timing/)
+
+**Profile工具**
+
+使用`console.profile()`和`console.profileEnd()`配合浏览器开发工具中的Profile
+
+**页面埋点计时**
+
+**资源加载时序图**
+
+#### 桌面浏览器前端优化策略
+
+* 网络加载
+	* 减少HTTP请求次数
+	* 减小HTTO请求大小
+	* 将CSS和JS放在外部文件以缓存
+	* 避免页面中空的href和src（渲染时仍会加载，直至失败）
+	* 指定合理的缓存
+	* 减少重定向
+	* 使用静态资源分域存放来增加下载并行数（一个域名的下载并行是有限的）
+	* 使用静态资源CDN存储文件
+	* 使用CDN Combo下载传输内容
+	* 使用可缓存的AJAX
+	* 使用GET请求AJAX
+	* 减小Cookie的大小并进行Cookie隔离
+	* 减小favicon.ico并缓存
+	* 推荐使用异步JS资源
+	* 消除阻塞渲染的CSS及JS
+	* 避免使用CSS import
+* 页面渲染
+	* 把CSS资源引用放到HTML顶部
+	* JS资源放到HTML底部
+	* 不在HTML中直接缩放图片（引起reLayout和reRender）
+	* 减少DOM元素数量和深度
+	* 避免使用`<table>`、`<iframe>`等慢元素（全部渲染完后才一次性绘制到页面上）
+	* 避免耗时的JS
+	* 避免CSS表达式或滤镜
+
+#### 移动端浏览器前端优化策略
+
+* 网络加载
+	* 首屏数据请求提前，避免JS文件加载后才请求数据
+	* 首屏加载和按需加载，非首屏内容滚屏加载，保证首屏内容最小化
+	* 模块化资源并行下载
+	* inline首屏必备的CSS和JS（写在HTML里）
+	* meta dns prefetch设置DNS预解析
+	* 资源预加载
+	* 合理利用MTU策略
+* 缓存
+	* 合理利用浏览器缓存
+	* 静态资源离线方案
+	* 尝试使用AMP HTML
+* 图片
+	* 图片压缩处理
+	* 使用较小的图片或Base64编码的图片
+	* 使用更高压缩比的图片
+	* 图片懒加载
+	* 使用Media Query或srcset按需加载
+	* 使用iconfont代替图片图标
+	* 定义上传图片大小限制
+* 脚本
+	* 尽量使用id选择器（快）
+	* 合理缓存DOM对象
+	* 页面元素尽量使用事件代理，避免直接事件绑定
+	* 使用touchstart代替click
+	* 避免touchmove、scroll连续事件处理（或设置合理节流）
+	* 避免使用eval、with，使用join代替+，推荐使用字符串模板
+	* 尽量使用ES6特性
+* 渲染
+	* 使用Viewport固定屏幕渲染，可以加速页面渲染内容
+	* 避免各种形式重排重绘
+	* 使用CSS3动画，开启GPU加速（`transform: translateZ(0)`）
+	* 合理使用Canvas和requestAnimationFrame
+	* SVG代替图片
+	* 不滥用float
+	* 不滥用web字体或过多font-size声明
+* 架构协议
+	* 尝试使用SPDY和HTTP2
+	* 使用后端渲染数据
+	* 使用Native View代替DOM
+
+### 前端用户数据分析
+#### 用户访问统计
