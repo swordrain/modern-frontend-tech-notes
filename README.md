@@ -141,6 +141,7 @@ HTTPS加入SSL层加密HTTP数据，启用默认为443的端口进行数据传�
 * Poll
 * Long Poll
 * DDP（Distributed Data Protocol分布式数据协议）- Node.js可通过ddp模块使用
+* SSE 见[这里](http://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 
 ### Restful数据协议规范
 满大街了，略
